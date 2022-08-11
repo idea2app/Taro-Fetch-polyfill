@@ -1,5 +1,5 @@
 import { Headers } from './Headers';
-import { Body } from './body';
+import { Body } from './Body';
 
 export class Request extends Body implements globalThis.Request {
     cache: RequestCache;

@@ -2,7 +2,7 @@ import Blob from 'miniprogram-blob';
 import FormData from 'miniprogram-formdata';
 
 import { Headers } from './Headers';
-import { Body } from './body';
+import { Body } from './Body';
 
 export class Response extends Body implements globalThis.Response {
     type: ResponseType = 'basic';
