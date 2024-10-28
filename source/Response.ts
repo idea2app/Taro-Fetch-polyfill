@@ -20,18 +20,18 @@ export class Response extends Body implements globalThis.Response {
         this.statusText = init?.statusText || '';
 
         if (init?.headers) this.headers = new Headers(init.headers);
-
+        // @ts-ignore
         this.body =
             body instanceof ReadableStream
                 ? body
                 : body instanceof FormData ||
-                  body instanceof globalThis.FormData
-                ? null
-                : body != null
-                ? new Blob([
-                      body instanceof URLSearchParams ? body + '' : body
-                  ]).stream()
-                : null;
+                    body instanceof globalThis.FormData
+                  ? null
+                  : body != null
+                    ? new Blob([
+                          body instanceof URLSearchParams ? body + '' : body
+                      ]).stream()
+                    : null;
     }
 
     clone() {
