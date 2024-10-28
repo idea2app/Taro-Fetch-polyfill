@@ -10,8 +10,8 @@ export class Headers implements globalThis.Headers {
             init instanceof Headers
                 ? [...init]
                 : init instanceof Array
-                ? init
-                : Object.entries(init);
+                  ? init
+                  : Object.entries(init);
 
         for (const [key, value] of init) this.append(key, value);
     }
@@ -74,5 +74,9 @@ export class Headers implements globalThis.Headers {
     ) {
         for (const [key, value] of this)
             callbackfn.call(thisArg, value, key, this);
+    }
+
+    getSetCookie(): string[] {
+        return store.get(this)?.['Set-Cookie'] ?? [];
     }
 }

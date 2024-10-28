@@ -1,4 +1,4 @@
-import 'web-streams-polyfill';
+import { ReadableStream } from 'web-streams-polyfill/ponyfill';
 import Blob from 'miniprogram-blob';
 import FormData from 'miniprogram-formdata';
 
