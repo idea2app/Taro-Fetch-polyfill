@@ -1,8 +1,20 @@
+import * as URLSearchParams from '@ungap/url-search-params';
 import Blob from 'miniprogram-blob';
 import FormData from 'miniprogram-formdata';
+import { ReadableStream } from 'web-streams-polyfill';
 
 import { Headers } from './Headers';
 import { Body } from './Body';
+
+export { URLSearchParams };
+
+export type BodyInit =
+    | string
+    | URLSearchParams
+    | FormData
+    | Blob
+    | BufferSource
+    | ReadableStream;
 
 export class Response extends Body implements globalThis.Response {
     type: ResponseType = 'basic';
@@ -20,7 +32,7 @@ export class Response extends Body implements globalThis.Response {
         this.statusText = init?.statusText || '';
 
         if (init?.headers) this.headers = new Headers(init.headers);
-        // @ts-ignore
+
         this.body =
             body instanceof ReadableStream
                 ? body
@@ -28,9 +40,12 @@ export class Response extends Body implements globalThis.Response {
                     body instanceof globalThis.FormData
                   ? null
                   : body != null
-                    ? new Blob([
-                          body instanceof URLSearchParams ? body + '' : body
-                      ]).stream()
+                    ? (new Blob([
+                          body instanceof
+                          (URLSearchParams as { new (): URLSearchParams })
+                              ? body + ''
+                              : body
+                      ]).stream() as ReadableStream)
                     : null;
     }
 

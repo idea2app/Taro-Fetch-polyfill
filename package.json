@@ -1,6 +1,6 @@
 {
     "name": "taro-fetch-polyfill",
-    "version": "0.5.0-rc.1",
+    "version": "0.5.0",
     "license": "LGPL-3.0",
     "author": "shiy2008@gmail.com",
     "description": "W3C fetch() API polyfill for Taro 3+",
@@ -28,10 +28,11 @@
     "main": "dist/index.js",
     "dependencies": {
         "@swc/helpers": "^0.5.13",
+        "@ungap/url-search-params": "^0.2.2",
         "array-unique-proposal": "^0.3.4",
         "miniprogram-blob": "^2.0.0",
         "miniprogram-formdata": "^2.0.0",
-        "web-streams-polyfill": "^3.3.3"
+        "web-streams-polyfill": "^4.0.0"
     },
     "peerDependencies": {
         "@tarojs/taro": ">=3"

@@ -1,6 +1,12 @@
-import { ReadableStream } from 'web-streams-polyfill/ponyfill';
+import {
+    ReadableStream,
+    WritableStream,
+    TransformStream
+} from 'web-streams-polyfill';
 import Blob from 'miniprogram-blob';
 import FormData from 'miniprogram-formdata';
+
+export { Blob, FormData, ReadableStream, WritableStream, TransformStream };
 
 export class Body {
     body: ReadableStream<Uint8Array> | null = null;

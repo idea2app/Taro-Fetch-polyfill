@@ -1,6 +1,6 @@
 import { request } from '@tarojs/taro';
 
-import { Request } from './Request';
+import { Request, RequestInit } from './Request';
 import { Response } from './Response';
 
 export async function fetch(input: RequestInfo | URL, init?: RequestInit) {

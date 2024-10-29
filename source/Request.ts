@@ -1,6 +1,10 @@
 import { Headers } from './Headers';
 import { Body } from './Body';
-import { Response } from './Response';
+import { BodyInit, Response } from './Response';
+
+export interface RequestInit extends Omit<globalThis.RequestInit, 'body'> {
+    body?: BodyInit | null;
+}
 
 export class Request extends Body implements globalThis.Request {
     cache: RequestCache;
