@@ -1,6 +1,6 @@
 {
     "name": "taro-fetch-polyfill",
-    "version": "0.5.0",
+    "version": "0.5.1",
     "license": "LGPL-3.0",
     "author": "shiy2008@gmail.com",
     "description": "W3C fetch() API polyfill for Taro 3+",
@@ -14,7 +14,7 @@
         "mini-app",
         "mini-program"
     ],
-    "homepage": "https://ideapp.dev/Taro-Fetch-polyfill/",
+    "homepage": "https://idea2app.github.io/Taro-Fetch-polyfill/",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/idea2app/Taro-Fetch-polyfill.git"
@@ -27,28 +27,28 @@
     "module": "dist/index.esm.js",
     "main": "dist/index.js",
     "dependencies": {
-        "@swc/helpers": "^0.5.13",
+        "@swc/helpers": "^0.5.15",
         "@ungap/url-search-params": "^0.2.2",
         "array-unique-proposal": "^0.3.4",
         "miniprogram-blob": "^2.0.0",
         "miniprogram-formdata": "^2.0.0",
-        "web-streams-polyfill": "^4.0.0"
+        "web-streams-polyfill": "^4.1.0"
     },
     "peerDependencies": {
         "@tarojs/taro": ">=3"
     },
     "devDependencies": {
-        "@parcel/packager-ts": "~2.12.0",
-        "@parcel/transformer-typescript-types": "~2.12.0",
-        "@tarojs/taro": "^4.0.7",
-        "husky": "^9.1.6",
-        "lint-staged": "^15.2.10",
+        "@parcel/packager-ts": "~2.14.1",
+        "@parcel/transformer-typescript-types": "~2.14.1",
+        "@tarojs/taro": "^4.0.9",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.5.0",
         "open-cli": "^8.0.0",
-        "parcel": "~2.12.0",
-        "prettier": "^3.3.3",
-        "typedoc": "^0.26.10",
-        "typedoc-plugin-mdn-links": "^3.3.5",
-        "typescript": "~5.6.3"
+        "parcel": "~2.14.1",
+        "prettier": "^3.5.3",
+        "typedoc": "^0.28.1",
+        "typedoc-plugin-mdn-links": "^5.0.1",
+        "typescript": "~5.8.2"
     },
     "prettier": {
         "singleQuote": true,
@@ -62,7 +62,12 @@
     "browserslist": "> 0.5%, last 2 versions, not dead",
     "targets": {
         "main": {
-            "optimize": true
+            "optimize": true,
+            "includeNodeModules": [
+                "@ungap/url-search-params",
+                "miniprogram-blob",
+                "miniprogram-formdata"
+            ]
         }
     },
     "scripts": {

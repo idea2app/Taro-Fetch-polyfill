@@ -13,6 +13,7 @@ for (const [key, value] of Object.entries({
 }))
     globalThis[key] = value;
 
+export * from './Blob';
 export * from './Headers';
 export * from './Body';
 export * from './Request';
