@@ -3,16 +3,17 @@ import {
     WritableStream,
     TransformStream
 } from 'web-streams-polyfill';
-import Blob from 'miniprogram-blob';
 import FormData from 'miniprogram-formdata';
 
-export { Blob, FormData, ReadableStream, WritableStream, TransformStream };
+import { Blob } from './Blob';
 
-export class Body {
+export { FormData, ReadableStream, TransformStream, WritableStream };
+
+export class Body implements globalThis.Body {
     body: ReadableStream<Uint8Array> | null = null;
     bodyUsed = false;
 
-    async arrayBuffer() {
+    async bytes() {
         const chunks: number[] = [],
             reader = this.body?.getReader();
 
@@ -24,7 +25,11 @@ export class Body {
 
                 chunks.push(...value);
             }
-        return new Uint8Array(chunks).buffer;
+        return new Uint8Array(chunks);
+    }
+
+    async arrayBuffer() {
+        return (await this.bytes()).buffer;
     }
 
     async blob() {

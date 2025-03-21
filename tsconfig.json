@@ -13,7 +13,6 @@
         "name": "Taro Fetch polyfill",
         "excludeExternals": true,
         "excludePrivate": true,
-        "readme": "./ReadMe.md",
         "plugin": ["typedoc-plugin-mdn-links"]
     }
 }
