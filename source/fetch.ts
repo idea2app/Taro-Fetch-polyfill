@@ -13,8 +13,6 @@ export async function fetch(input: RequestInfo | URL, init?: RequestInit) {
             ? 'text/plain'
             : headers.get('Content-Type')
     };
-    const Accept = headers.get('Accept');
-
     const response = await request<ArrayBuffer>({
         // @ts-ignore
         method,
@@ -24,12 +22,7 @@ export async function fetch(input: RequestInfo | URL, init?: RequestInit) {
         mode,
         credentials,
         data: await req.arrayBuffer(),
-        // @ts-expect-error https://nervjs.github.io/taro-docs/docs/apis/network/request/#datatype
-        responseType: Accept.includes('text')
-            ? 'text'
-            : Accept.includes('json')
-              ? 'json'
-              : 'arraybuffer'
+        responseType: 'arraybuffer'
     });
 
     return new Response(response.data, {

@@ -1,6 +1,6 @@
 {
     "name": "taro-fetch-polyfill",
-    "version": "0.5.6",
+    "version": "0.5.7",
     "license": "LGPL-3.0",
     "author": "shiy2008@gmail.com",
     "description": "W3C fetch() API polyfill for Taro 3+",
