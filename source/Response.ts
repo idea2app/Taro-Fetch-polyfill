@@ -1,8 +1,8 @@
 import * as URLSearchParams from '@ungap/url-search-params';
-import Blob from 'miniprogram-blob';
 import FormData from 'miniprogram-formdata';
 import { ReadableStream } from 'web-streams-polyfill';
 
+import { Blob } from './Blob';
 import { Headers } from './Headers';
 import { Body } from './Body';
 
