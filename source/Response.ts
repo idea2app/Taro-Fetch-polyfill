@@ -1,4 +1,5 @@
-import * as URLSearchParams from '@ungap/url-search-params';
+// @ts-expect-error Upstream export bug
+import { default as URLSearchParams } from '@ungap/url-search-params';
 import FormData from 'miniprogram-formdata';
 import { ReadableStream } from 'web-streams-polyfill';
 
@@ -36,8 +37,7 @@ export class Response extends Body implements globalThis.Response {
         this.body =
             body instanceof ReadableStream
                 ? body
-                : body instanceof FormData ||
-                    body instanceof globalThis.FormData
+                : body instanceof FormData
                   ? null
                   : body != null
                     ? (new Blob([
