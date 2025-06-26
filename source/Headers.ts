@@ -19,7 +19,7 @@ export class Headers implements globalThis.Headers {
     append(name: string, value: string) {
         const map = store.get(this) || {};
 
-        (map[name] ||= []).push(value);
+        (map[name.toLowerCase()] ||= []).push(value);
 
         store.set(this, map);
     }
@@ -27,28 +27,32 @@ export class Headers implements globalThis.Headers {
     set(name: string, value: string) {
         const map = store.get(this) || {};
 
-        map[name] = [value];
+        map[name.toLowerCase()] = [value];
 
         store.set(this, map);
     }
 
     get(name: string) {
-        return store.get(this)?.[name]?.join() ?? null;
+        return store.get(this)?.[name.toLowerCase()]?.join() ?? null;
     }
 
     has(name: string) {
-        return this.get(name) != null;
+        return this.get(name.toLowerCase()) != null;
     }
 
     delete(name: string) {
         const map = store.get(this) || {};
 
-        delete map[name];
+        delete map[name.toLowerCase()];
     }
 
     *[Symbol.iterator]() {
-        for (const [key, value] of Object.entries(store.get(this) || {}))
-            yield [key, value?.join()] as [string, string];
+        for (const [key, value] of Object.entries(store.get(this) || {})) {
+            const name = key.replace(/^\w|-\w/g, firstLetter =>
+                firstLetter.toUpperCase()
+            );
+            yield [name, value?.join()] as [string, string];
+        }
     }
 
     entries() {
@@ -77,6 +81,6 @@ export class Headers implements globalThis.Headers {
     }
 
     getSetCookie(): string[] {
-        return store.get(this)?.['Set-Cookie'] ?? [];
+        return store.get(this)?.['set-cookie'] ?? [];
     }
 }
